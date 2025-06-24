@@ -42,6 +42,24 @@ namespace SistemaTradicional.page
         protected global::System.Web.UI.WebControls.Button btnBuscarHuesped;
 
         /// <summary>
+        /// Control gvHuespedes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvHuespedes;
+
+        /// <summary>
+        /// Control lblID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblID;
+
+        /// <summary>
         /// Control lblNombreCompleto.
         /// </summary>
         /// <remarks>
@@ -49,15 +67,6 @@ namespace SistemaTradicional.page
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNombreCompleto;
-
-        /// <summary>
-        /// Control lblDNI.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDNI;
 
         /// <summary>
         /// Control lblEmail.
@@ -78,13 +87,22 @@ namespace SistemaTradicional.page
         protected global::System.Web.UI.WebControls.Label lblTelefono;
 
         /// <summary>
-        /// Control ddlHabitaciones.
+        /// Control btnEditarHuesped.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlHabitaciones;
+        protected global::System.Web.UI.WebControls.Button btnEditarHuesped;
+
+        /// <summary>
+        /// Control btnNuevoHuesped.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNuevoHuesped;
 
         /// <summary>
         /// Control lblNumeroHabitacion.
@@ -121,6 +139,24 @@ namespace SistemaTradicional.page
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPrecioNoche;
+
+        /// <summary>
+        /// Control txtFechaEntrada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFechaEntrada;
+
+        /// <summary>
+        /// Control txtFechaSalida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFechaSalida;
 
         /// <summary>
         /// Control txtNumeroHuespedes.
@@ -202,5 +238,14 @@ namespace SistemaTradicional.page
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardarHuesped;
+
+        /// <summary>
+        /// Control btnActualizarHuesped.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActualizarHuesped;
     }
 }

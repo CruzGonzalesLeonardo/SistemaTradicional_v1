@@ -7,7 +7,7 @@ use DBWEBHOTEL
 CREATE TABLE Huespedes (
     HuespedID INT PRIMARY KEY IDENTITY(1,1),          -- Identificador único del huésped
     H_NombreCompleto NVARCHAR(100) NOT NULL,          -- Nombre completo del huésped
-    H_Email NVARCHAR(255) UNIQUE NOT NULL,            -- Correo electrónico único del huésped
+    H_Email NVARCHAR(255) NOT NULL,            -- Correo electrónico único del huésped
     H_Telefono NVARCHAR(20),                          -- Número de teléfono del huésped
     H_Direccion NVARCHAR(255)                         -- Dirección del huésped
 );
@@ -66,6 +66,7 @@ INSERT INTO Habitaciones (Hab_NumeroHabitacion, Hab_Piso, Hab_Estado, Hab_Nombre
 ('102', 1, 'Disponible', 'Suite Ejecutiva', 'Amplia suite con sala de estar separada y vistas a la ciudad.', 2, 150.00),
 ('201', 2, 'Disponible', 'Doble Estándar', 'Habitación con dos camas individuales o una doble, baño privado.', 2, 80.00),
 ('202', 2, 'Ocupada', 'Triple Familiar', 'Habitación espaciosa con tres camas o una doble y una individual.', 3, 120.00);
+
 
 -- Datos de ejemplo para la tabla Reservas
 INSERT INTO Reservas (HuespedID, HabitacionID, Res_FechaLlegada, Res_FechaSalida, Res_FechaReserva, Res_NumeroHuespedes, Res_EstadoReserva, Res_Total, Res_Notas) VALUES

@@ -31,6 +31,7 @@ namespace SistemaTradicional.page
                 using (DBWEBHOTELEntities VistaHabitacion = new DBWEBHOTELEntities())
                 {
                     var consulta = from C in VistaHabitacion.Habitaciones
+                                   where C.Hab_Estado != "Ocupada" // o "Ocupada" según tu nomenclatura
                                    select C;
                     gvHabitaciones.DataSource = consulta.ToList();
                     gvHabitaciones.DataBind();
@@ -73,18 +74,15 @@ namespace SistemaTradicional.page
             }
         }
 
-        protected void gvHabitaciones_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        protected void gvHabitaciones_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "VerDetalles")
+            if (e.CommandName == "Seleccionar")
             {
-                int habitacionID = Convert.ToInt32(e.CommandArgument);
-                Console.WriteLine($"Nombre: {habitacionID}");
+                string numeroHabitacion = e.CommandArgument.ToString();
+
+                // Redirigir a checkin.aspx con el parámetro de la habitación
+                Response.Redirect($"checkin.aspx?habitacion={numeroHabitacion}");
             }
-        }
-
-        private void CargarDetallesHabitacion(int habitacionID)
-        {
-
         }
     }
 }

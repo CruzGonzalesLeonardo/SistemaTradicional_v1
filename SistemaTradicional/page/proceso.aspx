@@ -45,7 +45,7 @@
             <main class="content-area">
                 <section class="content-section active">
                     <h2>Listado de Habitaciones</h2>
-                    <asp:GridView ID="gvHabitaciones" runat="server" CssClass="data-grid" AutoGenerateColumns="False">
+                    <asp:GridView ID="gvHabitaciones" runat="server" CssClass="data-grid" AutoGenerateColumns="False" OnRowCommand="gvHabitaciones_RowCommand">
                         <Columns>
                             <asp:BoundField DataField="Hab_NumeroHabitacion" HeaderText="N° Hab." />
                             <asp:BoundField DataField="Hab_NombreTipo" HeaderText="Tipo" />
@@ -54,7 +54,9 @@
                             <asp:BoundField DataField="Hab_TarifaBase" HeaderText="Precio/Noche" DataFormatString="{0:C}" />
                             <asp:TemplateField HeaderText="Acciones">
                                 <ItemTemplate>
-                                    <asp:Button ID="btnVerDetalles" runat="server" Text="Ver" CssClass="boton-secundario" />
+                                    <asp:Button ID="btnVerDetalles" runat="server" Text="Ver" CssClass="boton-secundario" 
+                                        CommandName="Seleccionar" 
+                                        CommandArgument='<%# Eval("Hab_NumeroHabitacion") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

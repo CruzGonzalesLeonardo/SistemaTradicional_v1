@@ -160,7 +160,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data\sql script\DBHOTELWEB.ssmssln" />
     <EntityDeploy Include="data\BaseDatos.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BaseDatos.Designer.cs</LastGenOutput>
@@ -168,6 +167,7 @@
     <Content Include="data\BaseDatos.edmx.diagram">
       <DependentUpon>BaseDatos.edmx</DependentUpon>
     </Content>
+    <Content Include="data\sql script\DBHOTELWEB.ssmssln" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
