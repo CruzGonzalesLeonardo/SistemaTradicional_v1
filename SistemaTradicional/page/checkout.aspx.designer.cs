@@ -11,7 +11,7 @@ namespace SistemaTradicional.page
 {
 
 
-    public partial class proceso
+    public partial class checkout
     {
 
         /// <summary>

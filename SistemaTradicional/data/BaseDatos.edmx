@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBWEBHOTELModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Habitaciones">
+          <Key>
+            <PropertyRef Name="HabitacionID" />
+          </Key>
+          <Property Name="HabitacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hab_NumeroHabitacion" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Hab_Piso" Type="int" />
+          <Property Name="Hab_Estado" Type="nvarchar" MaxLength="20" />
+          <Property Name="Hab_NombreTipo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hab_DescripcionTipo" Type="nvarchar" MaxLength="500" />
+          <Property Name="Hab_Capacidad" Type="int" Nullable="false" />
+          <Property Name="Hab_TarifaBase" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Huespedes">
+          <Key>
+            <PropertyRef Name="HuespedID" />
+          </Key>
+          <Property Name="HuespedID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="H_NombreCompleto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="H_Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="H_Telefono" Type="nvarchar" MaxLength="20" />
+          <Property Name="H_Direccion" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Pagos">
+          <Key>
+            <PropertyRef Name="PagoID" />
+          </Key>
+          <Property Name="PagoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReservaID" Type="int" Nullable="false" />
+          <Property Name="Pag_Monto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Pag_FechaPago" Type="datetime" />
+          <Property Name="Pag_MetodoPago" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pag_EstadoPago" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="ReservaID" />
+          </Key>
+          <Property Name="ReservaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HuespedID" Type="int" Nullable="false" />
+          <Property Name="HabitacionID" Type="int" Nullable="false" />
+          <Property Name="Res_FechaLlegada" Type="date" Nullable="false" />
+          <Property Name="Res_FechaSalida" Type="date" Nullable="false" />
+          <Property Name="Res_FechaReserva" Type="datetime" />
+          <Property Name="Res_NumeroHuespedes" Type="int" Nullable="false" />
+          <Property Name="Res_EstadoReserva" Type="nvarchar" MaxLength="20" />
+          <Property Name="Res_Total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Res_Notas" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK__Pagos__ReservaID__45F365D3">
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="1" />
+          <End Role="Pagos" Type="Self.Pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservas">
+              <PropertyRef Name="ReservaID" />
+            </Principal>
+            <Dependent Role="Pagos">
+              <PropertyRef Name="ReservaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__Habita__412EB0B6">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="HabitacionID" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="HabitacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__Huespe__403A8C7D">
+          <End Role="Huespedes" Type="Self.Huespedes" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Huespedes">
+              <PropertyRef Name="HuespedID" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="HuespedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBWEBHOTELModelStoreContainer">
+          <EntitySet Name="Habitaciones" EntityType="Self.Habitaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Huespedes" EntityType="Self.Huespedes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservas" EntityType="Self.Reservas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Pagos__ReservaID__45F365D3" Association="Self.FK__Pagos__ReservaID__45F365D3">
+            <End Role="Reservas" EntitySet="Reservas" />
+            <End Role="Pagos" EntitySet="Pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__Habita__412EB0B6" Association="Self.FK__Reservas__Habita__412EB0B6">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__Huespe__403A8C7D" Association="Self.FK__Reservas__Huespe__403A8C7D">
+            <End Role="Huespedes" EntitySet="Huespedes" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBWEBHOTELModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Habitaciones">
+          <Key>
+            <PropertyRef Name="HabitacionID" />
+          </Key>
+          <Property Name="HabitacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hab_NumeroHabitacion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hab_Piso" Type="Int32" />
+          <Property Name="Hab_Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Hab_NombreTipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hab_DescripcionTipo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Hab_Capacidad" Type="Int32" Nullable="false" />
+          <Property Name="Hab_TarifaBase" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK__Reservas__Habita__412EB0B6" FromRole="Habitaciones" ToRole="Reservas" />
+        </EntityType>
+        <EntityType Name="Huespedes">
+          <Key>
+            <PropertyRef Name="HuespedID" />
+          </Key>
+          <Property Name="HuespedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="H_NombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="H_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="H_Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="H_Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK__Reservas__Huespe__403A8C7D" FromRole="Huespedes" ToRole="Reservas" />
+        </EntityType>
+        <EntityType Name="Pagos">
+          <Key>
+            <PropertyRef Name="PagoID" />
+          </Key>
+          <Property Name="PagoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReservaID" Type="Int32" Nullable="false" />
+          <Property Name="Pag_Monto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Pag_FechaPago" Type="DateTime" Precision="3" />
+          <Property Name="Pag_MetodoPago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pag_EstadoPago" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK__Pagos__ReservaID__45F365D3" FromRole="Pagos" ToRole="Reservas" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="ReservaID" />
+          </Key>
+          <Property Name="ReservaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HuespedID" Type="Int32" Nullable="false" />
+          <Property Name="HabitacionID" Type="Int32" Nullable="false" />
+          <Property Name="Res_FechaLlegada" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Res_FechaSalida" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Res_FechaReserva" Type="DateTime" Precision="3" />
+          <Property Name="Res_NumeroHuespedes" Type="Int32" Nullable="false" />
+          <Property Name="Res_EstadoReserva" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Res_Total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Res_Notas" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Habitaciones" Relationship="Self.FK__Reservas__Habita__412EB0B6" FromRole="Reservas" ToRole="Habitaciones" />
+          <NavigationProperty Name="Huespedes" Relationship="Self.FK__Reservas__Huespe__403A8C7D" FromRole="Reservas" ToRole="Huespedes" />
+          <NavigationProperty Name="Pagos" Relationship="Self.FK__Pagos__ReservaID__45F365D3" FromRole="Reservas" ToRole="Pagos" />
+        </EntityType>
+        <Association Name="FK__Reservas__Habita__412EB0B6">
+          <End Role="Habitaciones" Type="Self.Habitaciones" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitaciones">
+              <PropertyRef Name="HabitacionID" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="HabitacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__Huespe__403A8C7D">
+          <End Role="Huespedes" Type="Self.Huespedes" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Huespedes">
+              <PropertyRef Name="HuespedID" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="HuespedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pagos__ReservaID__45F365D3">
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="1" />
+          <End Role="Pagos" Type="Self.Pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservas">
+              <PropertyRef Name="ReservaID" />
+            </Principal>
+            <Dependent Role="Pagos">
+              <PropertyRef Name="ReservaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBWEBHOTELEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Habitaciones" EntityType="Self.Habitaciones" />
+          <EntitySet Name="Huespedes" EntityType="Self.Huespedes" />
+          <EntitySet Name="Pagos" EntityType="Self.Pagos" />
+          <EntitySet Name="Reservas" EntityType="Self.Reservas" />
+          <AssociationSet Name="FK__Reservas__Habita__412EB0B6" Association="Self.FK__Reservas__Habita__412EB0B6">
+            <End Role="Habitaciones" EntitySet="Habitaciones" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__Huespe__403A8C7D" Association="Self.FK__Reservas__Huespe__403A8C7D">
+            <End Role="Huespedes" EntitySet="Huespedes" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pagos__ReservaID__45F365D3" Association="Self.FK__Pagos__ReservaID__45F365D3">
+            <End Role="Reservas" EntitySet="Reservas" />
+            <End Role="Pagos" EntitySet="Pagos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBWEBHOTELModelStoreContainer" CdmEntityContainer="DBWEBHOTELEntities">
+          <EntitySetMapping Name="Habitaciones">
+            <EntityTypeMapping TypeName="DBWEBHOTELModel.Habitaciones">
+              <MappingFragment StoreEntitySet="Habitaciones">
+                <ScalarProperty Name="HabitacionID" ColumnName="HabitacionID" />
+                <ScalarProperty Name="Hab_NumeroHabitacion" ColumnName="Hab_NumeroHabitacion" />
+                <ScalarProperty Name="Hab_Piso" ColumnName="Hab_Piso" />
+                <ScalarProperty Name="Hab_Estado" ColumnName="Hab_Estado" />
+                <ScalarProperty Name="Hab_NombreTipo" ColumnName="Hab_NombreTipo" />
+                <ScalarProperty Name="Hab_DescripcionTipo" ColumnName="Hab_DescripcionTipo" />
+                <ScalarProperty Name="Hab_Capacidad" ColumnName="Hab_Capacidad" />
+                <ScalarProperty Name="Hab_TarifaBase" ColumnName="Hab_TarifaBase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Huespedes">
+            <EntityTypeMapping TypeName="DBWEBHOTELModel.Huespedes">
+              <MappingFragment StoreEntitySet="Huespedes">
+                <ScalarProperty Name="HuespedID" ColumnName="HuespedID" />
+                <ScalarProperty Name="H_NombreCompleto" ColumnName="H_NombreCompleto" />
+                <ScalarProperty Name="H_Email" ColumnName="H_Email" />
+                <ScalarProperty Name="H_Telefono" ColumnName="H_Telefono" />
+                <ScalarProperty Name="H_Direccion" ColumnName="H_Direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagos">
+            <EntityTypeMapping TypeName="DBWEBHOTELModel.Pagos">
+              <MappingFragment StoreEntitySet="Pagos">
+                <ScalarProperty Name="PagoID" ColumnName="PagoID" />
+                <ScalarProperty Name="ReservaID" ColumnName="ReservaID" />
+                <ScalarProperty Name="Pag_Monto" ColumnName="Pag_Monto" />
+                <ScalarProperty Name="Pag_FechaPago" ColumnName="Pag_FechaPago" />
+                <ScalarProperty Name="Pag_MetodoPago" ColumnName="Pag_MetodoPago" />
+                <ScalarProperty Name="Pag_EstadoPago" ColumnName="Pag_EstadoPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservas">
+            <EntityTypeMapping TypeName="DBWEBHOTELModel.Reservas">
+              <MappingFragment StoreEntitySet="Reservas">
+                <ScalarProperty Name="ReservaID" ColumnName="ReservaID" />
+                <ScalarProperty Name="HuespedID" ColumnName="HuespedID" />
+                <ScalarProperty Name="HabitacionID" ColumnName="HabitacionID" />
+                <ScalarProperty Name="Res_FechaLlegada" ColumnName="Res_FechaLlegada" />
+                <ScalarProperty Name="Res_FechaSalida" ColumnName="Res_FechaSalida" />
+                <ScalarProperty Name="Res_FechaReserva" ColumnName="Res_FechaReserva" />
+                <ScalarProperty Name="Res_NumeroHuespedes" ColumnName="Res_NumeroHuespedes" />
+                <ScalarProperty Name="Res_EstadoReserva" ColumnName="Res_EstadoReserva" />
+                <ScalarProperty Name="Res_Total" ColumnName="Res_Total" />
+                <ScalarProperty Name="Res_Notas" ColumnName="Res_Notas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
