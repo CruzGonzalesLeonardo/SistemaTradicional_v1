@@ -1,0 +1,693 @@
+﻿/* --- Variables CSS de Paleta Clara (Mantener estas) --- */
+:root {
+    --color-fondo-claro-primario: #FFFFFF;
+    --color-fondo-claro-secundario: #F8F8F8;
+    --color-primario-dorado: #C8A048;
+    --color-secundario-dorado: #E0C068;
+    --color-texto-oscuro-primario: #333333;
+    --color-texto-oscuro-secundario: #555555;
+    --color-acento-marron: #3D2C1C;
+    --color-borde-claro: #E0E0E0;
+    --color-sombra: rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos Generales (Mantener estos) */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-fondo-claro-primario);
+    color: var(--color-texto-oscuro-primario);
+    overflow-x: hidden;
+}
+
+/* --- ESTILOS ESPECÍFICOS PARA LA PORTADA (index.aspx) --- */
+/* (Mantener como están) */
+.portada-hotel {
+    background-image: url('img/FondoMachu.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-texto-claro);
+    position: relative;
+}
+
+    .portada-hotel::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.3);
+        z-index: 1;
+    }
+
+.contenido-portada {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px var(--color-sombra);
+}
+
+.logo-portada {
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.portada-hotel h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: var(--color-acento-marron);
+    text-shadow: 2px 2px 4px var(--color-sombra);
+}
+
+.portada-hotel p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--color-texto-oscuro-primario);
+}
+
+/* --- ESTILOS PARA LA BARRA DE NAVEGACIÓN (navbar) --- */
+/* (Mantener como están) */
+.navbar {
+    background-color: var(--color-fondo-claro-secundario);
+    border-bottom: 1px solid var(--color-borde-claro);
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px var(--color-sombra);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 40px;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+}
+
+    .navbar-logo img:hover {
+        transform: scale(1.05);
+    }
+
+.navbar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+    .navbar-nav ul li {
+        margin-right: 25px;
+    }
+
+        .navbar-nav ul li a {
+            color: var(--color-texto-oscuro-primario);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+            .navbar-nav ul li a::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -3px;
+                width: 0;
+                height: 2px;
+                background-color: var(--color-primario-dorado);
+                transition: width 0.3s ease-out;
+            }
+
+            .navbar-nav ul li a:hover::after,
+            .navbar-nav ul li a.active::after {
+                width: 100%;
+            }
+
+            .navbar-nav ul li a:hover {
+                color: var(--color-primario-dorado);
+            }
+
+            .navbar-nav ul li a.active {
+                color: var(--color-acento-marron);
+            }
+
+.btn-salir {
+    background-color: var(--color-primario-dorado);
+    color: var(--color-fondo-claro-primario);
+    border: 2px solid var(--color-primario-dorado);
+    padding: 8px 18px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .btn-salir:hover {
+        background-color: var(--color-acento-marron);
+        color: var(--color-fondo-claro-primario);
+        border-color: var(--color-acento-marron);
+    }
+
+/* --- CONTENIDO PRINCIPAL (content-wrapper de home.aspx) --- */
+/* (Mantener como está, solo aplica para home.aspx si se usa) */
+.content-wrapper {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: var(--color-fondo-claro-primario);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--color-sombra);
+}
+
+.info-general-hotel {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+    .info-general-hotel h2 {
+        color: var(--color-acento-marron);
+        font-size: 2.2em;
+        margin-bottom: 30px;
+    }
+
+.grid-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.info-card {
+    background-color: var(--color-fondo-claro-secundario);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--color-sombra);
+    text-align: center;
+    border: 1px solid var(--color-borde-claro);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px var(--color-sombra);
+    }
+
+    .info-card h3 {
+        color: var(--color-texto-oscuro-secundario);
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+
+    .info-card .data-number {
+        font-size: 3em;
+        font-weight: bold;
+        color: var(--color-primario-dorado);
+        margin-bottom: 15px;
+    }
+
+    .info-card i {
+        font-size: 2.5em;
+        color: var(--color-primario-dorado);
+        margin-top: 10px;
+    }
+
+.date-time-card {
+    background-color: var(--color-fondo-claro-secundario);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--color-sombra);
+    border: 1px solid var(--color-borde-claro);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+    .date-time-card h3 {
+        color: var(--color-texto-oscuro-secundario);
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    .date-time-card .data-datetime {
+        font-size: 1.8em;
+        font-weight: bold;
+        color: var(--color-acento-marron);
+        margin-bottom: 10px;
+    }
+
+    .date-time-card .location {
+        font-size: 1.1em;
+        color: var(--color-texto-oscuro-primario);
+    }
+
+
+/* --- Estilos para Botones, Enlaces, Formularios y Footer (Mantener estos) --- */
+.boton-primario {
+    background-color: var(--color-primario-dorado);
+    color: var(--color-fondo-claro-primario);
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+}
+
+    .boton-primario:hover {
+        background-color: var(--color-secundario-dorado);
+        transform: translateY(-2px);
+    }
+
+.boton-secundario {
+    background-color: transparent;
+    color: var(--color-primario-dorado);
+    border: 2px solid var(--color-primario-dorado);
+    padding: 10px 23px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+    .boton-secundario:hover {
+        background-color: var(--color-primario-dorado);
+        color: var(--color-fondo-claro-primario);
+        border-color: var(--color-primario-dorado);
+    }
+
+a {
+    color: var(--color-acento-marron);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    a:hover {
+        color: var(--color-primario-dorado);
+        text-decoration: underline;
+    }
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select { /* Añadido select para DropDownList */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-borde-claro);
+    border-radius: 4px;
+    background-color: var(--color-fondo-claro-primario);
+    color: var(--color-texto-oscuro-primario);
+}
+
+    input::placeholder,
+    textarea::placeholder {
+        color: var(--color-texto-oscuro-secundario);
+    }
+
+footer {
+    background-color: var(--color-fondo-claro-secundario);
+    color: var(--color-texto-oscuro-secundario);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    border-top: 1px solid var(--color-borde-claro);
+    margin-top: 30px;
+}
+
+
+/* --- NUEVOS ESTILOS PARA "PROCESO.ASPX" --- */
+
+.main-container {
+    display: flex; /* Contenedor principal con flexbox para sidebar y contenido */
+    min-height: calc(100vh - 60px); /* Altura mínima restando la navbar, ajusta según el padding de tu navbar */
+}
+
+.sidebar {
+    width: 250px; /* Ancho de la barra lateral */
+    background-color: var(--color-fondo-claro-secundario); /* Fondo de la barra lateral */
+    padding: 20px;
+    box-shadow: 2px 0 10px var(--color-sombra); /* Sombra hacia la derecha */
+    border-right: 1px solid var(--color-borde-claro);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .sidebar-nav ul li {
+        margin-bottom: 10px;
+    }
+
+        .sidebar-nav ul li a {
+            display: block; /* Para que ocupe todo el ancho del li */
+            padding: 12px 15px;
+            background-color: transparent;
+            color: var(--color-texto-oscuro-primario);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+
+            .sidebar-nav ul li a i { /* Estilo para iconos si usas Font Awesome */
+                margin-right: 10px;
+                color: var(--color-primario-dorado);
+            }
+
+            .sidebar-nav ul li a:hover {
+                background-color: var(--color-borde-claro); /* Fondo claro al pasar el mouse */
+                color: var(--color-acento-marron); /* Texto marrón oscuro al pasar el mouse */
+            }
+
+            .sidebar-nav ul li a.active {
+                background-color: var(--color-primario-dorado); /* Fondo dorado para el activo */
+                color: var(--color-fondo-claro-primario); /* Texto blanco para el activo */
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
+                .sidebar-nav ul li a.active i {
+                    color: var(--color-fondo-claro-primario); /* Icono blanco para el activo */
+                }
+
+
+.content-area {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    padding: 30px;
+    background-color: var(--color-fondo-claro-primario); /* Fondo blanco para el área de contenido */
+}
+
+.content-section {
+    display: none; /* Oculta todas las secciones por defecto */
+    background-color: var(--color-fondo-claro-secundario);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--color-sombra);
+    min-height: 400px; /* Para dar espacio */
+}
+
+    .content-section.active {
+        display: block; /* Muestra la sección activa */
+    }
+
+    .content-section h2 {
+        color: var(--color-acento-marron);
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+.hidden-section {
+    display: none; /* Clase para ocultar dinámicamente secciones */
+}
+
+/* --- ESTILOS PARA MODALES --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Super high z-index to be on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    padding-top: 50px;
+}
+
+.modal-content {
+    background-color: var(--color-fondo-claro-primario);
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 30px;
+    border: 1px solid var(--color-borde-claro);
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 900px; /* Max width for larger screens */
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+    .modal-content h2 {
+        color: var(--color-acento-marron);
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+.close-button {
+    color: var(--color-texto-oscuro-secundario);
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+    .close-button:hover,
+    .close-button:focus {
+        color: var(--color-acento-marron);
+        text-decoration: none;
+    }
+
+.modal-body {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las secciones se envuelvan */
+    gap: 30px; /* Espacio entre las columnas */
+    margin-bottom: 20px;
+}
+
+.form-section, .form-section-half {
+    flex: 1; /* Cada sección toma igual espacio */
+    min-width: 300px; /* Ancho mínimo antes de envolver */
+    padding: 20px;
+    border: 1px solid var(--color-borde-claro);
+    border-radius: 8px;
+    background-color: var(--color-fondo-claro-secundario);
+}
+
+    .form-section h3, .form-section-half h3 {
+        color: var(--color-primario-dorado);
+        margin-top: 0;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: var(--color-texto-oscuro-primario);
+    }
+
+.input-field {
+    width: calc(100% - 22px); /* Ancho completo menos padding y borde */
+    padding: 10px;
+    border: 1px solid var(--color-borde-claro);
+    border-radius: 4px;
+    background-color: var(--color-fondo-claro-primario);
+    color: var(--color-texto-oscuro-primario);
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+    .search-box .input-field {
+        flex-grow: 1;
+        margin-bottom: 0; /* Anula el margen inferior predefinido */
+    }
+
+.client-details label, .room-details label {
+    font-weight: bold;
+    margin-right: 5px;
+    color: var(--color-texto-oscuro-secundario);
+}
+
+.client-details span, .room-details span {
+    color: var(--color-acento-marron);
+    font-weight: normal;
+}
+
+.modal-buttons {
+    text-align: right; /* Botones a la derecha */
+    margin-top: 30px;
+}
+
+    .modal-buttons .boton-primario,
+    .modal-buttons .boton-secundario {
+        margin-left: 15px;
+    }
+
+/* Estilos para DataGrid de ASP.NET */
+.data-grid {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px var(--color-sombra);
+    background-color: var(--color-fondo-claro-primario);
+    border-radius: 8px;
+    overflow: hidden; /* Para que el borde redondeado se aplique bien */
+}
+
+.data-grid-header th {
+    background-color: var(--color-acento-marron); /* Fondo marrón oscuro para la cabecera */
+    color: var(--color-fondo-claro-primario); /* Texto blanco */
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid var(--color-primario-dorado);
+}
+
+.data-grid td {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--color-borde-claro);
+    color: var(--color-texto-oscuro-primario);
+}
+
+.data-grid tr:nth-child(even) { /* Filas alternas */
+    background-color: var(--color-fondo-claro-secundario); /* Blanco roto para filas pares */
+}
+
+.data-grid tr:hover {
+    background-color: var(--color-borde-claro); /* Resaltar al pasar el mouse */
+}
+
+.data-grid a.boton-secundario,
+.data-grid input[type="submit"].boton-secundario {
+    padding: 6px 12px; /* Botones más pequeños en la tabla */
+    font-size: 0.9em;
+}
+
+
+/* Media Queries para Responsividad */
+@media (max-width: 992px) {
+    .modal-content {
+        width: 90%;
+        margin: 2% auto; /* Ajuste para que quepa en pantallas más pequeñas */
+    }
+
+    .modal-body {
+        flex-direction: column; /* Apila las secciones del formulario en pantallas medianas */
+    }
+
+    .form-section, .form-section-half {
+        width: 100%; /* Ocupa todo el ancho */
+        min-width: unset;
+    }
+}
+
+@media (max-width: 768px) {
+    /* (Mantener estilos de navbar responsiva) */
+    .navbar {
+        flex-direction: column;
+        padding: 10px 15px;
+    }
+
+    .navbar-left {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .navbar-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .navbar-nav ul {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+        .navbar-nav ul li {
+            margin: 5px 0;
+        }
+
+    .navbar-right {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    /* Sidebar se oculta o se convierte en un menú desplegable en móvil */
+    .main-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+        box-shadow: 0 2px 10px var(--color-sombra);
+        border-right: none;
+        border-bottom: 1px solid var(--color-borde-claro);
+    }
+
+    .sidebar-nav ul {
+        display: flex; /* Para poner los botones en fila */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+        .sidebar-nav ul li {
+            margin: 5px 10px; /* Espacio entre botones en móvil */
+        }
+
+    .content-area {
+        padding: 20px;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 1% auto;
+        padding: 20px;
+    }
+
+    .modal-buttons {
+        text-align: center;
+    }
+
+        .modal-buttons .boton-primario,
+        .modal-buttons .boton-secundario {
+            margin: 10px 5px;
+        }
+}
