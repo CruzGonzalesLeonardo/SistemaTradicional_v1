@@ -28,10 +28,10 @@ namespace SistemaTradicional.page
         {
             try
             {
-                using (DBWEBHOTELEntities VistaHabitacion = new DBWEBHOTELEntities())
+                using (DBWEBHOTELV1 VistaHabitacion = new DBWEBHOTELV1())
                 {
                     var consulta = from C in VistaHabitacion.Habitaciones
-                                   where C.Hab_Estado != "Ocupada" // o "Ocupada" según tu nomenclatura
+                                   where C.Hab_Estado != "Ocupada" && C.Hab_Estado != "Reservado" // Corrected line
                                    select C;
                     gvHabitaciones.DataSource = consulta.ToList();
                     gvHabitaciones.DataBind();

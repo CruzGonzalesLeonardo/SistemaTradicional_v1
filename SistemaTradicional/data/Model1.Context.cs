@@ -13,10 +13,10 @@ namespace SistemaTradicional.data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBWEBHOTELEntities : DbContext
+    public partial class DBWEBHOTELV1 : DbContext
     {
-        public DBWEBHOTELEntities()
-            : base("name=DBWEBHOTELEntities")
+        public DBWEBHOTELV1()
+            : base("name=DBWEBHOTELV1")
         {
         }
     
@@ -27,7 +27,6 @@ namespace SistemaTradicional.data
     
         public DbSet<Habitaciones> Habitaciones { get; set; }
         public DbSet<Huespedes> Huespedes { get; set; }
-        public DbSet<Pagos> Pagos { get; set; }
         public DbSet<Reservas> Reservas { get; set; }
     }
 }

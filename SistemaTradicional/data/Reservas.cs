@@ -14,11 +14,6 @@ namespace SistemaTradicional.data
     
     public partial class Reservas
     {
-        public Reservas()
-        {
-            this.Pagos = new HashSet<Pagos>();
-        }
-    
         public int ReservaID { get; set; }
         public int HuespedID { get; set; }
         public int HabitacionID { get; set; }
@@ -27,11 +22,9 @@ namespace SistemaTradicional.data
         public Nullable<System.DateTime> Res_FechaReserva { get; set; }
         public int Res_NumeroHuespedes { get; set; }
         public string Res_EstadoReserva { get; set; }
-        public decimal Res_Total { get; set; }
         public string Res_Notas { get; set; }
     
         public virtual Habitaciones Habitaciones { get; set; }
         public virtual Huespedes Huespedes { get; set; }
-        public virtual ICollection<Pagos> Pagos { get; set; }
     }
 }

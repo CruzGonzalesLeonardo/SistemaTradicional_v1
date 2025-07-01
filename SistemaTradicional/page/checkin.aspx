@@ -178,7 +178,7 @@
         .date-range-selector {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 20px;
             margin-bottom: 15px;
         }
         
@@ -202,42 +202,15 @@
             border-color: #4CAF50;
             outline: none;
         }
-        
-        .nights-control {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            margin-top: 20px;
+
+        /* Estilos para mensajes de error */
+        .error-message {
+            color: #f44336;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
         }
-        
-        .nights-display {
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            min-width: 40px;
-            text-align: center;
-        }
-        
-        .nights-button {
-            background-color: #f2f2f2;
-            border: none;
-            width: 30px;
-            height: 20px;
-            border-radius: 3px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        .nights-button:hover {
-            background-color: #e6e6e6;
-        }
-        
+
         /* Estilos para el componente de notas */
         .notes-container {
             margin-top: 15px;
@@ -257,38 +230,6 @@
             min-height: 80px;
             resize: vertical;
         }
-        
-        /* Estilos para el componente de monto total */
-        .total-container {
-            margin-top: 15px;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            display: none;
-        }
-        
-        .total-display {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-        
-        .total-label {
-            font-weight: bold;
-        }
-        
-        .total-value {
-            font-weight: bold;
-            color: #4CAF50;
-        }
-        
-        .grand-total {
-            font-size: 1.2em;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid #ddd;
-        }
     </style>
 </head>
 <body>
@@ -302,7 +243,6 @@
                     <ul>
                         <li><a href="home.aspx">Inicio</a></li>
                         <li><a href="proceso.aspx">Proceso</a></li>
-                        <li><a href="#">Reportes/Registros</a></li>
                     </ul>
                 </nav>
             </div>
@@ -316,6 +256,7 @@
                 <nav class="sidebar-nav">
                     <ul>
                         <li><a href="proceso.aspx" class="sidebar-item"><i class="fa-solid fa-hotel"></i> Listar Habitaciones</a></li>
+                        <li><a href="reservas.aspx" class="sidebar-item"><i class="fa-solid fa-calendar-check"></i> Reservaciones</a></li>
                         <li><a href="checkin.aspx" class="sidebar-item active"><i class="fa-solid fa-door-open"></i> Check-in</a></li>
                         <li><a href="checkout.aspx" class="sidebar-item"><i class="fa-solid fa-door-closed"></i> Check-out</a></li>
                     </ul>
@@ -416,40 +357,19 @@
                                     <div class="date-input-container">
                                         <label for="txtFechaEntrada" style="display: block; margin-bottom: 5px; font-weight: bold;">Fecha de Entrada</label>
                                         <asp:TextBox ID="txtFechaEntrada" runat="server" TextMode="Date" CssClass="date-input"></asp:TextBox>
-                                    </div>
-                                    
-                                    <div class="nights-control">
-                                        <button type="button" class="nights-button" id="btnIncreaseNights">+</button>
-                                        <div class="nights-display" id="nightsDisplay">1 noche</div>
-                                        <button type="button" class="nights-button" id="btnDecreaseNights">-</button>
+                                        <div id="errorFechaEntrada" class="error-message">Fecha inválida</div>
                                     </div>
                                     
                                     <div class="date-input-container">
                                         <label for="txtFechaSalida" style="display: block; margin-bottom: 5px; font-weight: bold;">Fecha de Salida</label>
-                                        <asp:TextBox ID="txtFechaSalida" runat="server" TextMode="Date" CssClass="date-input" ReadOnly="false"></asp:TextBox>
+                                        <asp:TextBox ID="txtFechaSalida" runat="server" TextMode="Date" CssClass="date-input"></asp:TextBox>
+                                        <div id="errorFechaSalida" class="error-message">La fecha de salida debe ser posterior a la de entrada</div>
                                     </div>
                                 </div>
-                                <div>
-                                    <asp:Label Text="Precio por noche"  runat="server" ID="lblPrecioFinal"  />
-                                </div>
+                                
                                 <div class="notes-container">
                                     <label for="txtNotas">Notas adicionales:</label>
                                     <asp:TextBox ID="txtNotas" runat="server" TextMode="MultiLine" CssClass="notes-textarea" placeholder="Ingrese cualquier observación o nota especial..."></asp:TextBox>
-                                </div>
-                                
-                                <div class="total-container" id="totalContainer">
-                                    <div class="total-display">
-                                        <span class="total-label">Precio por noche:</span>
-                                        <span class="total-value" id="precioNocheDisplay">S/ 0.00</span>
-                                    </div>
-                                    <div class="total-display">
-                                        <span class="total-label">Noches:</span>
-                                        <span class="total-value" id="nochesDisplay">0</span>
-                                    </div>
-                                    <div class="total-display grand-total">
-                                        <span class="total-label">Total estimado:</span>
-                                        <span class="total-value" id="totalDisplay">S/ 0.00</span>
-                                    </div>
                                 </div>
         
                                 <div class="form-group">
@@ -462,8 +382,7 @@
                                     <label for="ddlNuevoEstado">Cambiar Estado a:</label>
                                     <asp:DropDownList ID="ddlNuevoEstado" runat="server" CssClass="input-field">
                                         <asp:ListItem Value="Reserva">Reservar</asp:ListItem>
-                                        <asp:ListItem Value="Ocupado">Ocupado</asp:ListItem>
-                                        <asp:ListItem Value="Cancelar">Cancelar</asp:ListItem>
+                                        <asp:ListItem Value="Ocupado">Alquilar</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -535,48 +454,19 @@
             });
         });
 
-        function actualizarBotonesHuesped(mostrarEditar) {
-            const btnEditar = document.getElementById('<%= btnEditarHuesped.ClientID %>');
-            const btnNuevo = document.getElementById('<%= btnNuevoHuesped.ClientID %>');
-
-            btnEditar.style.display = mostrarEditar ? 'inline-block' : 'none';
-        }
-
-        // Control del selector de fechas y cálculo de total
+        // Control de fechas con validación básica
         document.addEventListener('DOMContentLoaded', function () {
             const fechaEntrada = document.getElementById('<%= txtFechaEntrada.ClientID %>');
             const fechaSalida = document.getElementById('<%= txtFechaSalida.ClientID %>');
-            const btnIncrease = document.getElementById('btnIncreaseNights');
-            const btnDecrease = document.getElementById('btnDecreaseNights');
-            const nightsDisplay = document.getElementById('nightsDisplay');
-            const totalContainer = document.getElementById('totalContainer');
-            const precioNocheDisplay = document.getElementById('precioNocheDisplay');
-            const nochesDisplay = document.getElementById('nochesDisplay');
-            const totalDisplay = document.getElementById('totalDisplay');
-    
-            let nights = 1;
-            let precioNoche = 0;
-    
-            // Obtener el precio por noche del hidden field
-            const hdnPrecioNoche = document.getElementById('<%= hdnPrecioNoche.ClientID %>');
-            if (hdnPrecioNoche && hdnPrecioNoche.value) {
-                precioNoche = parseFloat(hdnPrecioNoche.value.replace(',', '.')); // Asegurar formato decimal correcto
-                updateTotalDisplay();
-            }
+            const errorFechaEntrada = document.getElementById('errorFechaEntrada');
+            const errorFechaSalida = document.getElementById('errorFechaSalida');
 
-            // Función para formatear fecha a YYYY-MM-DD (formato compatible con input type="date")
+            // Función para formatear fecha a YYYY-MM-DD
             function formatDate(date) {
-                const d = new Date(date);
-                let month = '' + (d.getMonth() + 1);
-                let day = '' + d.getDate();
-                const year = d.getFullYear();
-
-                if (month.length < 2)
-                    month = '0' + month;
-                if (day.length < 2)
-                    day = '0' + day;
-
-                return [year, month, day].join('-');
+                if (!(date instanceof Date)) {
+                    date = new Date(date);
+                }
+                return date.toISOString().split('T')[0];
             }
 
             // Establecer fecha mínima (hoy)
@@ -586,72 +476,48 @@
             // Establecer fechas iniciales
             if (!fechaEntrada.value) {
                 fechaEntrada.value = formatDate(today);
-
-                // Establecer fecha de salida como un día después
                 const tomorrow = new Date(today);
                 tomorrow.setDate(today.getDate() + 1);
                 fechaSalida.value = formatDate(tomorrow);
             }
 
-            // Actualizar fecha de salida cuando cambia la fecha de entrada
+            // Validar fechas al cambiar
             fechaEntrada.addEventListener('change', function () {
-                if (fechaEntrada.value) {
-                    updateEndDate();
-                }
+                validateDates();
             });
 
-            // Botón para aumentar noches
-            btnIncrease.addEventListener('click', function () {
-                nights++;
-                updateNightsDisplay();
-                updateEndDate();
-                updateTotalDisplay();
-                showTotalContainer();
+            fechaSalida.addEventListener('change', function () {
+                validateDates();
             });
 
-            // Botón para disminuir noches (mínimo 1)
-            btnDecrease.addEventListener('click', function () {
-                if (nights > 1) {
-                    nights--;
-                    updateNightsDisplay();
-                    updateEndDate();
-                    updateTotalDisplay();
-                    showTotalContainer();
+            function validateDates() {
+                // Validar fecha de entrada
+                if (!fechaEntrada.value) {
+                    errorFechaEntrada.style.display = 'block';
+                    return false;
+                } else {
+                    errorFechaEntrada.style.display = 'none';
                 }
-            });
 
-            function updateNightsDisplay() {
-                nightsDisplay.textContent = nights + (nights === 1 ? " noche" : " noches");
-                nochesDisplay.textContent = nights;
+                // Validar que fecha de salida sea posterior a entrada
+                if (fechaEntrada.value && fechaSalida.value) {
+                    const start = new Date(fechaEntrada.value);
+                    const end = new Date(fechaSalida.value);
+
+                    if (end <= start) {
+                        errorFechaSalida.style.display = 'block';
+                        return false;
+                    } else {
+                        errorFechaSalida.style.display = 'none';
+                    }
+                }
+
+                return true;
             }
 
-            function updateEndDate() {
-                if (fechaEntrada.value) {
-                    const startDate = new Date(fechaEntrada.value);
-                    const endDate = new Date(startDate);
-                    endDate.setDate(startDate.getDate() + nights);
-                    fechaSalida.value = formatDate(endDate);
-                }
-            }
-
-            function updateTotalDisplay() {
-                if (precioNoche > 0) {
-                    const total = nights * precioNoche;
-                    precioNocheDisplay.textContent = 'S/ ' + precioNoche.toFixed(2);
-                    totalDisplay.textContent = 'S/ ' + total.toFixed(2);
-                }
-            }
-
-            function showTotalContainer() {
-                if (precioNoche > 0) {
-                    totalContainer.style.display = 'block';
-                }
-            }
-
-            // Inicializar
-            updateNightsDisplay();
+            // Inicializar validación
+            validateDates();
         });
     </script>
-
 </body>
 </html>

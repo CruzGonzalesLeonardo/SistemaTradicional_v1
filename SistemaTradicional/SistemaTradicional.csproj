@@ -75,12 +75,12 @@
   <ItemGroup>
     <Content Include="data\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>BaseDatos.edmx</DependentUpon>
     </Content>
     <Content Include="data\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BaseDatos.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="data\sql script\DBSCRIPT.txt" />
@@ -93,6 +93,7 @@
     <Content Include="page\checkout.aspx" />
     <Content Include="page\home.aspx" />
     <Content Include="page\proceso.aspx" />
+    <Content Include="page\reservas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -112,13 +113,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="data\BaseDatos.Designer.cs">
+    <Compile Include="data\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BaseDatos.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="data\Pagos.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="data\Reservas.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -158,15 +156,22 @@
     <Compile Include="page\proceso.aspx.designer.cs">
       <DependentUpon>proceso.aspx</DependentUpon>
     </Compile>
+    <Compile Include="page\reservas.aspx.cs">
+      <DependentUpon>reservas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page\reservas.aspx.designer.cs">
+      <DependentUpon>reservas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="data\BaseDatos.edmx">
+    <EntityDeploy Include="data\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BaseDatos.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="data\BaseDatos.edmx.diagram">
-      <DependentUpon>BaseDatos.edmx</DependentUpon>
+    <Content Include="data\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

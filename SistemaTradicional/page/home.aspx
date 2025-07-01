@@ -18,7 +18,6 @@
                     <ul>
                         <li><a href="home.aspx" class="active">Inicio</a></li>
                         <li><a href="proceso.aspx">Proceso</a></li>
-                        <li><a href="#">Reportes/Registros</a></li> </ul>
                 </nav>
             </div>
             <div class="navbar-right">
@@ -31,14 +30,14 @@
                 <div class="grid-info">
                     <div class="info-card">
                         <h3>Habitaciones Libres</h3>
-                        <p class="data-number">15</p> <i class="icon-bed"></i> </div>
+                        <p class="data-number"> <asp:Label Text="--" ID="lblHlibres" runat="server" /></p> <i class="icon-bed"></i> </div>
                     <div class="info-card">
                         <h3>Habitaciones Ocupadas</h3>
-                        <p class="data-number">8</p> <i class="icon-user"></i>
+                        <p class="data-number"> <asp:Label Text="--" ID="lblOcupadas" runat="server" /></p> <i class="icon-user"></i>
                     </div>
                     <div class="info-card">
                         <h3>Habitaciones Reservadas</h3>
-                        <p class="data-number">5</p> <i class="icon-calendar"></i>
+                        <p class="data-number"> <asp:Label Text="--" ID="lblReservadas" runat="server" /></p> <i class="icon-calendar"></i>
                     </div>
                 </div>
 

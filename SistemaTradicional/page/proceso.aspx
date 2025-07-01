@@ -20,7 +20,6 @@
                     <ul>
                         <li><a href="home.aspx">Inicio</a></li>
                         <li><a href="proceso.aspx" class="active">Proceso</a></li>
-                        <li><a href="#">Reportes/Registros</a></li>
                     </ul>
                 </nav>
             </div>
@@ -35,6 +34,7 @@
                 <nav class="sidebar-nav">
                     <ul>
                         <li><a href="proceso.aspx" class="sidebar-item active"><i class="fa-solid fa-hotel"></i> Listar Habitaciones</a></li>
+                        <li><a href="reservas.aspx" class="sidebar-item"><i class="fa-solid fa-calendar-check"></i> Reservaciones</a></li>
                         <li><a href="checkin.aspx" class="sidebar-item"><i class="fa-solid fa-door-open"></i> Check-in</a></li>
                         <li><a href="checkout.aspx" class="sidebar-item"><i class="fa-solid fa-door-closed"></i> Check-out</a></li>
                     </ul>

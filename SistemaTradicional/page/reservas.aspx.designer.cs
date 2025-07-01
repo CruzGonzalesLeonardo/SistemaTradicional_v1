@@ -11,7 +11,7 @@ namespace SistemaTradicional.page
 {
 
 
-    public partial class checkout
+    public partial class reservas
     {
 
         /// <summary>
@@ -24,40 +24,76 @@ namespace SistemaTradicional.page
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control gvHabitaciones.
+        /// Control gvReservaciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvHabitaciones;
+        protected global::System.Web.UI.WebControls.GridView gvReservaciones;
 
         /// <summary>
-        /// Control modalCheckout.
+        /// Control lblClienteID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalCheckout;
+        protected global::System.Web.UI.WebControls.Label lblClienteID;
 
         /// <summary>
-        /// Control lblReservaId.
+        /// Control lblClienteNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblReservaId;
+        protected global::System.Web.UI.WebControls.Label lblClienteNombre;
 
         /// <summary>
-        /// Control lblHabitacionNumero.
+        /// Control lblClienteEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHabitacionNumero;
+        protected global::System.Web.UI.WebControls.Label lblClienteEmail;
+
+        /// <summary>
+        /// Control lblClienteTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblClienteTelefono;
+
+        /// <summary>
+        /// Control lblReservaID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblReservaID;
+
+        /// <summary>
+        /// Control lblReservaHabitacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblReservaHabitacion;
+
+        /// <summary>
+        /// Control lblFechaLlegada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaLlegada;
 
         /// <summary>
         /// Control lblFechaSalida.
@@ -69,48 +105,57 @@ namespace SistemaTradicional.page
         protected global::System.Web.UI.WebControls.Label lblFechaSalida;
 
         /// <summary>
-        /// Control lblHuespedNombre.
+        /// Control lblNoches.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHuespedNombre;
+        protected global::System.Web.UI.WebControls.Label lblNoches;
 
         /// <summary>
-        /// Control lblHuespedDocumento.
+        /// Control lblTotalReserva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHuespedDocumento;
+        protected global::System.Web.UI.WebControls.Label lblTotalReserva;
 
         /// <summary>
-        /// Control ddlAccionCheckout.
+        /// Control lblEstadoReservaActual.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAccionCheckout;
+        protected global::System.Web.UI.WebControls.Label lblEstadoReservaActual;
 
         /// <summary>
-        /// Control txtNotasCheckout.
+        /// Control ddlCambiarEstadoReserva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNotasCheckout;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCambiarEstadoReserva;
 
         /// <summary>
-        /// Control btnConfirmarCheckout.
+        /// Control btnGuardarCambiosReserva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirmarCheckout;
+        protected global::System.Web.UI.WebControls.Button btnGuardarCambiosReserva;
+
+        /// <summary>
+        /// Control btnCancelarSeleccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelarSeleccion;
     }
 }
