@@ -83,7 +83,8 @@
       <DependentUpon>BaseDatos.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="data\sql script\SCRIPDATABASE.txt" />
+    <Content Include="data\sql script\DBSCRIPT.txt" />
+    <Content Include="data\sql script\DATOSSCRIP.txt" />
     <Content Include="estilos.css" />
     <Content Include="img\FondoMachu.jpg" />
     <Content Include="img\logo.jpg" />
@@ -167,7 +168,6 @@
     <Content Include="data\BaseDatos.edmx.diagram">
       <DependentUpon>BaseDatos.edmx</DependentUpon>
     </Content>
-    <Content Include="data\sql script\DBHOTELWEB.ssmssln" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

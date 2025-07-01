@@ -1,0 +1,26 @@
+USE DBWEBHOTEL
+GO;
+
+-- Datos de ejemplo para la tabla Huespedes
+INSERT INTO Huespedes (H_NombreCompleto, H_Email, H_Telefono, H_Direccion) VALUES
+('Ana García', 'ana.garcia@example.com', '555-1234', 'Calle Falsa 123, Ciudad'),
+('Carlos Ruiz', 'carlos.ruiz@example.com', '555-5678', 'Avenida Siempre Viva 45, Pueblo'),
+('María López', 'maria.lopez@example.com', '555-8765', 'Plaza Mayor 7, Villa');
+
+-- Datos de ejemplo para la tabla Habitaciones
+INSERT INTO Habitaciones (Hab_NumeroHabitacion, Hab_Piso, Hab_Estado, Hab_NombreTipo, Hab_DescripcionTipo, Hab_Capacidad, Hab_TarifaBase) VALUES
+('101', 1, 'Ocupada', 'Doble Estándar', 'Habitación con dos camas individuales o una doble, baño privado.', 2, 80.00),
+('102', 1, 'Disponible', 'Suite Ejecutiva', 'Amplia suite con sala de estar separada y vistas a la ciudad.', 2, 150.00),
+('201', 2, 'Disponible', 'Doble Estándar', 'Habitación con dos camas individuales o una doble, baño privado.', 2, 80.00),
+('202', 2, 'Ocupada', 'Triple Familiar', 'Habitación espaciosa con tres camas o una doble y una individual.', 3, 120.00),
+('301', 3, 'Disponible', 'Doble Deluxe', 'Habitación doble con balcón y vista al mar.', 2, 100.00),
+('302', 3, 'Disponible', 'Suite Presidencial', 'Lujosa suite con múltiples habitaciones, jacuzzi y servicio exclusivo.', 4, 300.00),
+('401', 4, 'Ocupada', 'Individual', 'Habitación pequeña con una cama individual y baño.', 1, 60.00),
+('402', 4, 'Disponible', 'Doble Estándar', 'Habitación con dos camas individuales o una doble, baño privado.', 2, 80.00);
+
+-- Datos de ejemplo para la tabla Reservas
+INSERT INTO Reservas (HuespedID, HabitacionID, Res_FechaLlegada, Res_FechaSalida, Res_FechaReserva, Res_NumeroHuespedes, Res_EstadoReserva, Res_Notas) VALUES
+(1, 1, '2025-07-01', '2025-07-05', GETDATE(), 2, 'Confirmada', 'Check-in temprano solicitado.'),
+(2, 4, '2025-07-10', '2025-07-12', GETDATE(), 3, 'Confirmada', 'Se necesita cama extra para niño.'),
+(3, 1, '2025-08-01', '2025-08-03', GETDATE(), 2, 'Pendiente', 'Pago pendiente.');
+GO

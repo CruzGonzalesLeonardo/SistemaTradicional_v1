@@ -1,6 +1,7 @@
 ﻿using SistemaTradicional.data;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,7 +13,7 @@ namespace SistemaTradicional.page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            gvHuespedes.CssClass += " visible";
+
 
             if (!IsPostBack)
             {
@@ -23,8 +24,11 @@ namespace SistemaTradicional.page
 
                     lblNumeroHabitacion.Text = numeroHabitacion;
                     BuscarHabitacion(numeroHabitacion);
+
                 }
             }
+
+            gvHuespedes.CssClass += " visible";
         }
 
         protected void btnBuscarHuesped_Click(object sender, EventArgs e)
@@ -91,7 +95,18 @@ namespace SistemaTradicional.page
 
         protected void btnConfirmarCheckIn_Click(object sender, EventArgs e)
         {
+            string debugInfo = "Valores recolectados:\n";
+            debugInfo += $"ID Huésped: {lblID.Text}\n";
+            debugInfo += $"ID Habitación: {txtIdHabitacion.Text}\n";
+            debugInfo += $"Fecha Entrada: {txtFechaEntrada.Text}\n";
+            debugInfo += $"Fecha Salida: {txtFechaSalida.Text}\n";
+            debugInfo += $"Número Huéspedes: {txtNumeroHuespedes.Text}\n";
+            debugInfo += $"Estado Seleccionado: {ddlNuevoEstado.SelectedValue}\n";
+            debugInfo += $"Notas: {txtNotas.Text}\n";
 
+            // Mostrar esta información (puedes verla en la consola, un alert, o un archivo de log)
+            System.Diagnostics.Debug.WriteLine(debugInfo); // Para ver en Output de Visual Studio
+            MostrarMensaje(debugInfo);
         }
 
         protected void btnCancelarCheckIn_Click(object sender, EventArgs e)
@@ -177,6 +192,7 @@ namespace SistemaTradicional.page
                 if (huesped != null)
                 {
                     // Actualizar campos editables (excepto ID y DNI si es clave primaria)
+                    
                     huesped.H_NombreCompleto = txtModalNombre.Text;
                     huesped.H_Email = txtModalEmail.Text;
                     huesped.H_Telefono = txtModalTelefono.Text;
@@ -199,6 +215,7 @@ namespace SistemaTradicional.page
                 if (habitacion != null)
                 {
                     // Llenar los controles con los datos de la habitación
+                    txtIdHabitacion.Text = habitacion.HabitacionID.ToString ();
                     lblNumeroHabitacion.Text = habitacion.Hab_NumeroHabitacion;
                     lblTipoHabitacion.Text = $"{habitacion.Hab_NombreTipo} (Capacidad: {habitacion.Hab_Capacidad})";
                     lblEstadoActual.Text = habitacion.Hab_Estado;

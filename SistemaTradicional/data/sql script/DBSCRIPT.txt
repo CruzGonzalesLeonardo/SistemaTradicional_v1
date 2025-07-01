@@ -1,0 +1,44 @@
+CREATE DATABASE DBWEBHOTEL
+GO;
+
+USE DBWEBHOTEL
+GO;
+
+-- Tabla para almacenar la información de los huéspedes
+CREATE TABLE Huespedes (
+    HuespedID INT PRIMARY KEY IDENTITY(1,1),          -- Identificador único del huésped
+    H_NombreCompleto NVARCHAR(100) NOT NULL,          -- Nombre completo del huésped
+    H_Email NVARCHAR(255) NOT NULL,                   -- Correo electrónico único del huésped
+    H_Telefono NVARCHAR(20),                          -- Número de teléfono del huésped
+    H_Direccion NVARCHAR(255)                         -- Dirección del huésped
+);
+
+-- Tabla para gestionar las habitaciones individuales del hotel, incluyendo los detalles del tipo de habitación
+CREATE TABLE Habitaciones (
+    HabitacionID INT PRIMARY KEY IDENTITY(1,1),       -- Identificador único de la habitación
+    Hab_NumeroHabitacion NVARCHAR(10) NOT NULL UNIQUE, -- Número o identificador único de la habitación (ej: "101")
+    Hab_Piso INT,                                     -- Piso donde se encuentra la habitación
+    Hab_Estado NVARCHAR(20) DEFAULT 'Disponible',     -- Estado actual de la habitación (ej: "Disponible", "Ocupada")
+    
+    -- Detalles del tipo de habitación integrados
+    Hab_NombreTipo NVARCHAR(50) NOT NULL,             -- Nombre del tipo de habitación (ej: "Doble", "Suite")
+    Hab_DescripcionTipo NVARCHAR(500),                -- Descripción detallada del tipo de habitación
+    Hab_Capacidad INT NOT NULL,                       -- Número máximo de personas que soporta esta habitación
+    Hab_TarifaBase DECIMAL(10, 2) NOT NULL            -- Tarifa base por noche para esta habitación
+);
+
+-- Tabla para registrar las reservas de los huéspedes
+CREATE TABLE Reservas (
+    ReservaID INT PRIMARY KEY IDENTITY(1,1),          -- Identificador único de la reserva
+    HuespedID INT NOT NULL,                           -- Clave foránea al huésped que realiza la reserva
+    HabitacionID INT NOT NULL,                        -- Clave foránea a la habitación reservada
+    Res_FechaLlegada DATE NOT NULL,                   -- Fecha de llegada programada
+    Res_FechaSalida DATE NOT NULL,                    -- Fecha de salida programada
+    Res_FechaReserva DATETIME DEFAULT GETDATE(),      -- Fecha y hora en que se realizó la reserva
+    Res_NumeroHuespedes INT NOT NULL,                 -- Cantidad de huéspedes en la reserva
+    Res_EstadoReserva NVARCHAR(20) DEFAULT 'Confirmada', -- Estado actual de la reserva (ej: "Confirmada", "Cancelada")
+    Res_Notas NVARCHAR(500),                          -- Notas adicionales para la reserva
+    FOREIGN KEY (HuespedID) REFERENCES Huespedes(HuespedID),
+    FOREIGN KEY (HabitacionID) REFERENCES Habitaciones(HabitacionID)
+);
+GO

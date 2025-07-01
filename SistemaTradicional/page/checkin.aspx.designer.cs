@@ -105,6 +105,15 @@ namespace SistemaTradicional.page
         protected global::System.Web.UI.WebControls.Button btnNuevoHuesped;
 
         /// <summary>
+        /// Control txtIdHabitacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtIdHabitacion;
+
+        /// <summary>
         /// Control lblNumeroHabitacion.
         /// </summary>
         /// <remarks>
@@ -141,6 +150,15 @@ namespace SistemaTradicional.page
         protected global::System.Web.UI.WebControls.Label lblPrecioNoche;
 
         /// <summary>
+        /// Control hdnPrecioNoche.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnPrecioNoche;
+
+        /// <summary>
         /// Control txtFechaEntrada.
         /// </summary>
         /// <remarks>
@@ -157,6 +175,24 @@ namespace SistemaTradicional.page
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaSalida;
+
+        /// <summary>
+        /// Control lblPrecioFinal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPrecioFinal;
+
+        /// <summary>
+        /// Control txtNotas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNotas;
 
         /// <summary>
         /// Control txtNumeroHuespedes.
